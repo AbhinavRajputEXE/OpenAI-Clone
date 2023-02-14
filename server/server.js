@@ -12,17 +12,16 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 const app = express()
-app.use(cors())
+app.use(cors({origin:"*"}));
 app.use(express.json())
 
-app.use((req,res,next)=>{
-    res.setHeader("Access-Control-Allow_Origin","https://open-ai-clone-theta.vercel.app/");
-    res.header("Access-Control-Allow_Origin","Origin, X-Requested-With,Content-Type,Accept");
-    next();
-});
+// app.use((req,res,next)=>{
+//     res.setHeader("Access-Control-Allow_Origin","https://open-ai-clone-theta.vercel.app/");
+//     res.header("Access-Control-Allow_Origin","Origin, X-Requested-With,Content-Type,Accept");
+//     next();
+// });
 
 app.get('/', async (req, res) => {
-  res.header('Access-Control-Allow-Origin','*');
   res.status(200).send({
     message: 'Hello from Clone!'
   })
@@ -31,7 +30,6 @@ app.get('/', async (req, res) => {
 app.post('/', async (req, res) => {
   try {
     const prompt = req.body.prompt;
-    res.header("Access-Control-Allow-Origin","*");
     const response = await openai.createCompletion({
       model: "text-davinci-003",
       prompt: `${prompt}`,
