@@ -65,7 +65,7 @@ const handleSubmit = async (e) =>{
   loader(messageDiv);
 
   //fetch data from server
-  const response = await fetch('https://openai-clone-q4ve.onrender.com', {
+  const response = await fetch('https://openai-clone-q4ve.onrender.com/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
