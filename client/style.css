@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100;300;400;500;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 * {
   margin: 0;
@@ -8,14 +9,89 @@
 }
 
 body {
-  background: #a85900;
+  background: rgb(131,58,180);
+  background: linear-gradient(90deg, rgb(123, 55, 171) 0%, rgb(197, 23, 23) 50%, rgb(195, 136, 53) 100%);
 }
+
+.heading{
+  background-color: #0000003b;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 20px 0px 20px 50px;
+}
+
+.container {
+  color: var(--color);
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.right {
+  text-align: right;
+  width: 100%;
+}
+
+.stack {
+  display: grid;
+  grid-template-columns: 1fr;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.stack span {
+  font-weight: bold;
+  font-family: 'Press Start 2P', cursive;
+  color: #dcdcdc;
+  grid-row-start: 1;
+  grid-column-start: 1;
+  font-size: 2rem;
+  --stack-height: calc(100% / var(--stacks) - 1px);
+  --inverse-index: calc(calc(var(--stacks) - 1) - var(--index));
+  --clip-top: calc(var(--stack-height) * var(--index));
+  --clip-bottom: calc(var(--stack-height) * var(--inverse-index));
+  clip-path: inset(var(--clip-top) 0 var(--clip-bottom) 0);
+  animation: stack 340ms cubic-bezier(.46,.29,0,1.24) 1 backwards calc(var(--index) * 120ms), glitch 2s ease infinite 2s alternate-reverse;
+}
+
+.stack span:nth-child(odd) { --glitch-translate: 8px; }
+.stack span:nth-child(even) { --glitch-translate: -8px; }
+
+@keyframes stack {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%);
+    text-shadow: -3px 4px 0 red, 3px -4px 0 blue;
+  };
+  60% {
+    opacity: 0.5;
+    transform: translateX(50%);
+  }
+  80% {
+    transform: none;
+    opacity: 1;
+    text-shadow: 3px -4px 0 red, -3px 4px 0 blue;
+  }
+  100% {
+    text-shadow: none;
+  }
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: -3px 4px 0 red, 3px -4px 0 blue;
+    transform: translate(var(--glitch-translate));
+  }
+  2% {
+    text-shadow: 3px -4px 0 red, -3px 4px 0 blue;
+  }
+  4%, 100% {  text-shadow: none; transform: none; }
+}
+
 
 #app {
   width: 100vw;
-  height: 100vh;
-  background: #003905;
-
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,7 +126,7 @@ body {
 }
 
 .ai {
-  background: #645300b4;
+  background: #9991009b;
 }
 
 .chat {
@@ -67,9 +143,9 @@ body {
 .profile {
   width: 36px;
   height: 36px;
-  border-radius: 5px;
+  border-radius: 50%;
 
-  background: #00a62f;
+  background: #007a23a1;
 
   display: flex;
   justify-content: center;
@@ -77,7 +153,7 @@ body {
 }
 
 .ai .profile {
-  background: #ff0000;
+  background: #ff000061;
 }
 
 .profile img {
@@ -117,11 +193,13 @@ form {
   max-width: 1280px;
   margin: 10px auto;
   padding: 10px;
-  background: #004e07;
+  background: #004e07a8;
   border-radius: 50px;
   display: flex;
   flex-direction: row;
   gap: 10px;
+  position: absolute;
+  bottom: 0px;
 }
 
 textarea {
