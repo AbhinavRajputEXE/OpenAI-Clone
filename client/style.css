@@ -8,6 +8,27 @@
   font-family: "Alegreya Sans", sans-serif;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #000000; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ffffff; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
 body {
   background: rgb(131,58,180);
   background: linear-gradient(90deg, rgb(102, 45, 144) 0%, rgb(175, 21, 21) 50%, rgb(128, 85, 25) 100%);
