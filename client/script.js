@@ -118,3 +118,9 @@ form.addEventListener('keyup', (e) => {
         handleSubmit(e)
     }
 })
+
+const chk = document.getElementById('chk');
+chk.addEventListener('change', () => {
+  document.getElementById('bck').classList.toggle('dark');
+  document.getElementById('frm').classList.toggle('dark');
+});
